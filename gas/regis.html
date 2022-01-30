@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regis Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.6/dist/sweetalert2.min.css">
+    <style>
+        input[type=text],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .box-gray {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box-gray">
+        <label for="username">ชื่อผู้ใช้</label>
+        <input type="text" id="username" value="<?= username ?>" placeholder="กรัณากรอกชื่อผู้ใช้...">
+        <button onclick="saveUser()">บันทึก</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.6/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function saveUser() {
+            let userId = '<?= userId ?>';
+            let username = document.getElementById("username").value;
+            google.script.run.saveUser(userId, username);
+            Swal.fire('Good job!', 'You clicked the button!', 'success')
+                .then(() => { window.location.reload(); });
+        }
+    </script>
+</body>
+
+</html>
